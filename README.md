@@ -1,2 +1,3 @@
 # StorageSpacesNotifyDaemon
-A basic C# applicaiton to show a toast notification when a storage pool becomed unhealthy
+
+A basic C# applicaiton to show a toast notification when a storage pool become unhealthy

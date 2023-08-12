@@ -21,6 +21,9 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.0.2
 
+      - name: Restore NuGet packages
+        run: msbuild -t:restore
+
       - name: Build project
         run: make build
 
