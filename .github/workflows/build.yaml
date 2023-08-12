@@ -1,0 +1,31 @@
+name: Build and Publish Artifact
+
+on:
+  push:
+    branches:
+      - main # Trigger this action on push to the main branch
+
+jobs:
+  build:
+    runs-on: windows-latest # Use a Windows runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x" # Set up .NET 5.0
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Build project
+        run: make build
+
+      - name: Publish artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: storage-spaces-notify-daemon
+          path: ./build/*.exe # Replace with the correct path to your .exe
